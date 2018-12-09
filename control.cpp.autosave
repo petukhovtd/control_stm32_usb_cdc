@@ -1,0 +1,33 @@
+#include "control.h"
+
+control::control()
+{
+
+}
+
+int control::Regulator(int& value)
+{
+    switch (parameters.Control) 
+    {
+    case Manual: return ControlAction;
+    case Relay: RelayControl(value);
+        break;
+    case PID: return 0;
+    case NC: return 0;
+    default: return 0;
+    }
+    
+    return ControlAction;
+}
+
+void control::RelayControl(int& value)
+{
+    if (value > (parameters.TargetValue + parameters.RelayGate))
+    {
+        ControlAction = 100;
+    }
+    else if (value < (parameters.TargetValue - parameters.RelayGate)) 
+    {
+        ControlAction = 0;
+    }
+}
