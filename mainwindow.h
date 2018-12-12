@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
+
 #include <QtSerialPort>
 #include <QSerialPortInfo>
 
@@ -25,9 +27,10 @@ private slots:
     void ComPortRead();
     void SetInF();
     void SetOutF();
-    void SetAction();
     void StartUpdateControl();
     void StopControl();
+
+    void UpdateInterface();
 
 private:
     void GetPortList();
@@ -38,6 +41,7 @@ private:
     QSerialPort *sp = nullptr;
     protocolconvertor *convert = nullptr;
     control *reg = nullptr;
+    QTimer *timer = nullptr;
 };
 
 #endif // MAINWINDOW_H

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>499</width>
-    <height>300</height>
+    <width>524</width>
+    <height>413</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,20 +20,17 @@
       <x>10</x>
       <y>10</y>
       <width>158</width>
-      <height>151</height>
+      <height>141</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="7" column="0">
-      <widget class="QLineEdit" name="InFEdit">
+     <item row="3" column="1">
+      <widget class="QLabel" name="OutValueLabel">
        <property name="text">
-        <string>1</string>
-       </property>
-       <property name="maxLength">
-        <number>5</number>
+        <string>Action: 0%</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -44,13 +41,17 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="PointsLabel">
+     <item row="9" column="1">
+      <widget class="QPushButton" name="SetOutFButton">
        <property name="text">
-        <string>Points: 0</string>
+        <string>Set Out F</string>
        </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="ErrorLabel">
+       <property name="text">
+        <string>Error: </string>
        </property>
       </widget>
      </item>
@@ -64,43 +65,13 @@
        </property>
       </widget>
      </item>
-     <item row="10" column="0">
-      <widget class="QLineEdit" name="ActionEdit">
+     <item row="2" column="0">
+      <widget class="QLabel" name="PointsLabel">
        <property name="text">
-        <string>0</string>
-       </property>
-       <property name="maxLength">
-        <number>3</number>
+        <string>Points: 0</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="0">
-      <widget class="QLineEdit" name="OutFEdit">
-       <property name="text">
-        <string>15</string>
-       </property>
-       <property name="maxLength">
-        <number>6</number>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="9" column="1">
-      <widget class="QPushButton" name="SetOutFButton">
-       <property name="text">
-        <string>Set Out F</string>
-       </property>
-      </widget>
-     </item>
-     <item row="10" column="1">
-      <widget class="QPushButton" name="SetActionButton">
-       <property name="text">
-        <string>SetAction</string>
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
@@ -114,20 +85,23 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
-      <widget class="QLabel" name="OutValueLabel">
-       <property name="text">
-        <string>Action: 0%</string>
+     <item row="7" column="0">
+      <widget class="QSpinBox" name="InFspinBox">
+       <property name="minimum">
+        <number>1</number>
        </property>
-       <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       <property name="maximum">
+        <number>10000</number>
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="ErrorLabel">
-       <property name="text">
-        <string>Error: </string>
+     <item row="9" column="0">
+      <widget class="QSpinBox" name="OutFspinBox">
+       <property name="minimum">
+        <number>15</number>
+       </property>
+       <property name="maximum">
+        <number>15000</number>
        </property>
       </widget>
      </item>
@@ -145,6 +119,40 @@
     <property name="currentIndex">
      <number>0</number>
     </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Manual</string>
+     </attribute>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>0</y>
+        <width>51</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Action</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="ActionspinBox">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>1</y>
+        <width>42</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="correctionMode">
+       <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="RelayControl">
      <attribute name="title">
       <string>Relay</string>
@@ -162,20 +170,17 @@
        <string>Gate</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="RelayGateEdit">
+     <widget class="QSpinBox" name="GatespinBox">
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>0</y>
-        <width>51</width>
-        <height>21</height>
+        <y>1</y>
+        <width>42</width>
+        <height>20</height>
        </rect>
       </property>
-      <property name="text">
-       <string>0</string>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
+      <property name="maximum">
+       <number>4095</number>
       </property>
      </widget>
     </widget>
@@ -222,32 +227,38 @@
        <string>D</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="PIDPEdit">
+     <widget class="QDoubleSpinBox" name="PIDPdoubleSpinBox">
       <property name="geometry">
        <rect>
         <x>60</x>
-        <y>0</y>
-        <width>51</width>
+        <y>1</y>
+        <width>42</width>
         <height>20</height>
        </rect>
       </property>
+      <property name="decimals">
+       <number>1</number>
+      </property>
      </widget>
-     <widget class="QLineEdit" name="PIDIEdit">
+     <widget class="QDoubleSpinBox" name="PIDIdoubleSpinBox">
       <property name="geometry">
        <rect>
         <x>60</x>
         <y>20</y>
-        <width>51</width>
+        <width>42</width>
         <height>20</height>
        </rect>
       </property>
+      <property name="correctionMode">
+       <enum>QAbstractSpinBox::CorrectToPreviousValue</enum>
+      </property>
      </widget>
-     <widget class="QLineEdit" name="PIDDEdit">
+     <widget class="QDoubleSpinBox" name="PIDDdoubleSpinBox">
       <property name="geometry">
        <rect>
         <x>60</x>
         <y>40</y>
-        <width>51</width>
+        <width>42</width>
         <height>20</height>
        </rect>
       </property>
@@ -265,22 +276,6 @@
     </property>
     <property name="text">
      <string>StopControl</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="TargetValueEdit">
-    <property name="geometry">
-     <rect>
-      <x>256</x>
-      <y>10</y>
-      <width>133</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>0</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -309,13 +304,26 @@
      <string>StartControl</string>
     </property>
    </widget>
+   <widget class="QSpinBox" name="TargetValuespinBox">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>10</y>
+      <width>151</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>4095</number>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>499</width>
+     <width>524</width>
      <height>21</height>
     </rect>
    </property>
