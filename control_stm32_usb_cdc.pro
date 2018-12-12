@@ -29,12 +29,14 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     protocolconvertor.cpp \
-    control.cpp
+    control.cpp \
+    storage.cpp
 
 HEADERS += \
         mainwindow.h \
     protocolconvertor.h \
-    control.h
+    control.h \
+    storage.h
 
 FORMS += \
         mainwindow.ui

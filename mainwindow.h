@@ -9,6 +9,7 @@
 
 #include "protocolconvertor.h"
 #include "control.h"
+#include "storage.h"
 
 namespace Ui {
 class MainWindow;
