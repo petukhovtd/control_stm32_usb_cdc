@@ -7,11 +7,12 @@ control::control()
 
 int control::Regulator(int& value)
 {
+    values.Value = value;
     switch (parameters.Control)
     {
     case Manual:
         break;
-    case Relay: RelayControl(value);
+    case Relay: RelayControl();
         break;
     case PID: return 0;
     case NC: return 0;
@@ -21,15 +22,15 @@ int control::Regulator(int& value)
     return values.Action;
 }
 
-void control::RelayControl(int& value)
+void control::RelayControl()
 {
-    values.Error = parameters.TargetValue - value;
+    values.Error = parameters.TargetValue - values.Value;
 
-    if (value > (parameters.TargetValue + parameters.Relay_Gate))
+    if ((-values.Error) > parameters.Relay_Gate)
     {
         values.Action = 0;
     }
-    else if (value < (parameters.TargetValue - parameters.Relay_Gate))
+    else if (values.Error > parameters.Relay_Gate)
     {
         values.Action = 100;
     }

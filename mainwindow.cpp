@@ -95,7 +95,7 @@ void MainWindow::ComPortRead()
     QByteArray data = sp->readAll();
     int i = convert->InToValue(data);
 
-    ui->InValueLabel->setText("Value: " + QString::number(i));
+//    ui->InValueLabel->setText("Value: " + QString::number(i));
 
     int action = reg->Regulator(i);
     QByteArray message = convert->ValueToOut(convert->SetOutAction, action);

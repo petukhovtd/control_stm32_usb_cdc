@@ -20,7 +20,7 @@ public:
     int getError();
 
 private:
-    void RelayControl(int& value);
+    void RelayControl();
 
 public:
     enum Control
