@@ -95,8 +95,6 @@ void MainWindow::ComPortRead()
     QByteArray data = sp->readAll();
     int i = convert->InToValue(data);
 
-//    ui->InValueLabel->setText("Value: " + QString::number(i));
-
     int action = reg->Regulator(i);
     QByteArray message = convert->ValueToOut(convert->SetOutAction, action);
     sp->write(message);
@@ -138,4 +136,52 @@ void MainWindow::UpdateInterface()
     ui->OutValueLabel->setText("Action: " + QString::number(reg->getAction()) + "%");
     ui->ErrorLabel->setText("Error: " + QString::number(reg->getError()));
 
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    QVector<double> x(10), y(10);
+    for (int i=0; i<10; ++i)
+    {
+      x[i] = i;
+      y[i] = i;
+    }
+
+    ui->plotwidget->addGraph();
+    ui->plotwidget->graph(0)->addData(x, y);
+    ui->plotwidget->graph(0)->setLineStyle(QCPGraph::lsNone);
+    ui->plotwidget->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, 5));
+
+    ui->plotwidget->xAxis->setLabel("x");
+    ui->plotwidget->yAxis->setLabel("y");
+    ui->plotwidget->xAxis->rescale();
+    ui->plotwidget->yAxis->rescale();
+    ui->plotwidget->replot();
+}
+
+void MainWindow::on_addbutton_clicked()
+{
+    QVector<double> x(10), y(10);
+    for (int i=0; i<10; ++i)
+    {
+      x[i] = i+10;
+      y[i] = i+10;
+    }
+
+    ui->plotwidget->graph(0)->addData(x, y);
+    ui->plotwidget->xAxis->rescale();
+    ui->plotwidget->yAxis->rescale();
+    ui->plotwidget->replot();
+
+}
+
+void MainWindow::on_clearbutton_clicked()
+{
+    if( ui->plotwidget->graphCount())
+    {
+        ui->plotwidget->clearGraphs();
+        ui->plotwidget->xAxis->rescale();
+        ui->plotwidget->yAxis->rescale();
+        ui->plotwidget->replot();
+    }
 }

@@ -7,7 +7,7 @@
 QT += core gui
 QT += serialport
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = control_stm32_usb_cdc
 TEMPLATE = app
@@ -30,13 +30,15 @@ SOURCES += \
         mainwindow.cpp \
     protocolconvertor.cpp \
     control.cpp \
-    storage.cpp
+    storage.cpp \
+    qcustomplot.cpp
 
 HEADERS += \
         mainwindow.h \
     protocolconvertor.h \
     control.h \
-    storage.h
+    storage.h \
+    qcustomplot.h
 
 FORMS += \
         mainwindow.ui

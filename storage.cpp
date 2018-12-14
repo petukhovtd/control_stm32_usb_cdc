@@ -1,19 +1,22 @@
 #include "storage.h"
 
 storage::storage(size_t n):
-    size(n),
-    time(new QDateTime),
-    value(new std::vector<int>),
-    action(new std::vector<int>)
+    size(n)
 {
-    value->reserve(size);
-    action->reserve(size);
+    value_mass->reserve(size);
+    action_mass->reserve(size);
+    time_mass->reserve(size);
 }
 
+void storage::addPiont(int value, int action)
+{
+    value_mass->push_back(value);
+    action_mass->push_back(action);
+//    time_mass->push_back(QDateTime::)
+
+}
 
 storage::~storage()
 {
-    delete time;
-    delete value;
-    delete action;
+
 }

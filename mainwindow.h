@@ -11,6 +11,7 @@
 #include "control.h"
 #include "storage.h"
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -32,6 +33,12 @@ private slots:
     void StopControl();
 
     void UpdateInterface();
+
+    void on_pushButton_clicked();
+
+    void on_addbutton_clicked();
+
+    void on_clearbutton_clicked();
 
 private:
     void GetPortList();

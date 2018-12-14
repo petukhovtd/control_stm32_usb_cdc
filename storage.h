@@ -3,6 +3,7 @@
 
 #include <QDateTime>
 #include <vector>
+#include <memory>
 
 
 class storage
@@ -11,12 +12,12 @@ public:
     storage(size_t n);
     ~storage();
 
+    void addPiont(int value, int action);
 private:
     size_t size = 0;
-    QDateTime *time = nullptr;
-    std::vector<int> *value = nullptr;
-    std::vector<int> *action = nullptr;
-
+    std::unique_ptr<std::vector<int>> value_mass;
+    std::unique_ptr<std::vector<int>> action_mass;
+    std::unique_ptr<std::vector<QDateTime>> time_mass;
 };
 
 #endif // STORAGE_H
