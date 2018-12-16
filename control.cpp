@@ -1,11 +1,20 @@
 #include "control.h"
 
-control::control()
+SRegulator::SRegulator()
 {
 
 }
 
-int control::Regulator(int& value)
+SRegulator::~SRegulator()
+{
+
+}
+
+/*
+ * Call regulate algoritm according to Control in Parameters
+ * if Manual return Action from values
+*/
+int SRegulator::Regulator(int& value)
 {
     values.Value = value;
     switch (parameters.Control)
@@ -14,7 +23,8 @@ int control::Regulator(int& value)
         break;
     case Relay: RelayControl();
         break;
-    case PID: return 0;
+    case PID: PIDControl();
+        break;
     case NC: return 0;
     default: return 0;
     }
@@ -22,7 +32,10 @@ int control::Regulator(int& value)
     return values.Action;
 }
 
-void control::RelayControl()
+/*
+ * Relay control algoritm
+*/
+void SRegulator::RelayControl()
 {
     values.Error = parameters.TargetValue - values.Value;
 
@@ -36,44 +49,75 @@ void control::RelayControl()
     }
 }
 
+void SRegulator::PIDControl()
+{
+    values.Error = parameters.TargetValue - values.Value;
+    float P = 0;
+    float I = 0;
+    float D = 0;
+    int sum = 0;
 
-int control::getValue()
+    P = values.Error*parameters.PID_P;
+
+    PIDDate.ISum += values.Error;
+    PIDDate.ISum = CheckThreshold(PIDDate.ISumMin, PIDDate.ISumMax, PIDDate.ISum);
+    I = PIDDate.ISum*parameters.PID_I;
+
+    sum = P + I + D;
+
+    values.Action = CheckThreshold(0, 100, sum);
+}
+
+int SRegulator::CheckThreshold(int min, int max, int value)
+{
+    if (value>max)
+    {
+        value = max;
+    }
+    else if (value<min)
+    {
+        value = min;
+    }
+    return value;
+}
+
+int SRegulator::getValue()
 {
     return values.Value;
 }
-int control::getAction()
+int SRegulator::getAction()
 {
     return values.Action;
 }
-int control::getError()
+int SRegulator::getError()
 {
     return values.Error;
 }
-void control::setAction(int i)
+void SRegulator::setAction(int i)
 {
     values.Action = i;
 }
-void control::setControl(int i)
+void SRegulator::setControl(int i)
 {
     parameters.Control = i;
 }
-void control::setTargetValue(int i)
+void SRegulator::setTargetValue(int i)
 {
     parameters.TargetValue = i;
 }
-void control::setRelay_Gate(int i)
+void SRegulator::setRelay_Gate(int i)
 {
     parameters.Relay_Gate = i;
 }
-void control::setPID_P(float i)
+void SRegulator::setPID_P(float i)
 {
     parameters.PID_P = i;
 }
-void control::setPID_I(float i)
+void SRegulator::setPID_I(float i)
 {
     parameters.PID_I = i;
 }
-void control::setPID_D(float i)
+void SRegulator::setPID_D(float i)
 {
     parameters.PID_D = i;
 }

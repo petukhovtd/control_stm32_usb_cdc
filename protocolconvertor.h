@@ -3,10 +3,12 @@
 
 #include <QByteArray>
 
-class protocolconvertor
+class SProtocolConvertor
 {
 public:
-    protocolconvertor();
+    SProtocolConvertor();
+    ~SProtocolConvertor();
+
     int InToValue(QByteArray& b);
     QByteArray ValueToOut(int command, int value);
 

@@ -31,25 +31,23 @@ private slots:
     void SetOutF();
     void StartUpdateControl();
     void StopControl();
+    void SavetoFile();
+    void PlotClear();
 
     void UpdateInterface();
 
-    void on_pushButton_clicked();
-
-    void on_addbutton_clicked();
-
-    void on_clearbutton_clicked();
-
 private:
     void GetPortList();
-    void ButtonState(bool state);
+    void ButtonStatefromConnect(bool state);
+    void PlotConfig();
 
 private:
     Ui::MainWindow *ui;
     QSerialPort *sp = nullptr;
-    protocolconvertor *convert = nullptr;
-    control *reg = nullptr;
     QTimer *timer = nullptr;
+    std::unique_ptr<SProtocolConvertor> convert = nullptr;
+    std::unique_ptr<SRegulator> reg = nullptr;
+    std::unique_ptr<SStorage> buffer = nullptr;
 };
 
 #endif // MAINWINDOW_H

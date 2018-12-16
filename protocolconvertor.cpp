@@ -1,12 +1,26 @@
 #include "protocolconvertor.h"
 #include <regex>
 
-protocolconvertor::protocolconvertor()
+SProtocolConvertor::SProtocolConvertor()
 {
 
 }
 
-int protocolconvertor::InToValue(QByteArray& b)
+SProtocolConvertor::~SProtocolConvertor()
+{
+
+}
+
+/*
+ * Input: QByteArray from com port
+ *
+ * Parse input messege Dx=y;
+ * x - nuber command
+ * y - date
+ *
+ * return y integer date
+*/
+int SProtocolConvertor::InToValue(QByteArray& b)
 {
     std::string s = b.toStdString();
     static std::regex re(R"(D(\d{1,2})=(\d{1,6});)");
@@ -22,7 +36,16 @@ int protocolconvertor::InToValue(QByteArray& b)
     return 0;
 }
 
-QByteArray protocolconvertor::ValueToOut(int command, int value)
+
+/*
+ * Input: x,y integer
+ *
+ * Conver input x, y command to message
+ * Dx=y;
+ *
+ * return QByteArray message
+*/
+QByteArray SProtocolConvertor::ValueToOut(int command, int value)
 {
     char buf[11];
     sprintf(buf, "D%d=%d;", command, value);

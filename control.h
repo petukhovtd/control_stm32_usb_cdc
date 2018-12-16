@@ -1,10 +1,12 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
-class control
+class SRegulator
 {
 public:
-    control();
+    SRegulator();
+    ~SRegulator();
+
     int Regulator(int& value);
 
     void setAction(int i);
@@ -21,6 +23,8 @@ public:
 
 private:
     void RelayControl();
+    void PIDControl();
+    int CheckThreshold(int min, int max, int value);
 
 public:
     enum Control
@@ -50,6 +54,13 @@ private:
 
     } parameters;
 
+    struct PIDDate
+    {
+        int ISum = 0;
+        static constexpr int ISumMax = 1000;
+        static constexpr int ISumMin = -1000;
+
+    } PIDDate;
 };
 
 #endif // CONTROL_H
