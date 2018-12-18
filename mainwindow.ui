@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>524</width>
-    <height>413</height>
+    <width>549</width>
+    <height>485</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -19,8 +25,8 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>158</width>
-      <height>141</height>
+      <width>201</width>
+      <height>161</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
@@ -107,238 +113,37 @@
      </item>
     </layout>
    </widget>
-   <widget class="QTabWidget" name="ControlSelectWidget">
-    <property name="geometry">
-     <rect>
-      <x>175</x>
-      <y>36</y>
-      <width>221</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="currentIndex">
-     <number>2</number>
-    </property>
-    <widget class="QWidget" name="tab">
-     <attribute name="title">
-      <string>Manual</string>
-     </attribute>
-     <widget class="QLabel" name="label_6">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>0</y>
-        <width>51</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Action</string>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="ActionspinBox">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>1</y>
-        <width>42</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="correctionMode">
-       <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
-      </property>
-      <property name="maximum">
-       <number>100</number>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="RelayControl">
-     <attribute name="title">
-      <string>Relay</string>
-     </attribute>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>0</y>
-        <width>47</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Gate</string>
-      </property>
-     </widget>
-     <widget class="QSpinBox" name="GatespinBox">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>1</y>
-        <width>42</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="maximum">
-       <number>3300</number>
-      </property>
-      <property name="value">
-       <number>10</number>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="PIDControl">
-     <attribute name="title">
-      <string>PID</string>
-     </attribute>
-     <widget class="QLabel" name="label_3">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>1</y>
-        <width>20</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>P</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>23</y>
-        <width>47</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>I</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_5">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>42</y>
-        <width>47</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>D</string>
-      </property>
-     </widget>
-     <widget class="QDoubleSpinBox" name="PIDPdoubleSpinBox">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>1</y>
-        <width>42</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="decimals">
-       <number>1</number>
-      </property>
-     </widget>
-     <widget class="QDoubleSpinBox" name="PIDIdoubleSpinBox">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>20</y>
-        <width>42</width>
-        <height>20</height>
-       </rect>
-      </property>
-      <property name="correctionMode">
-       <enum>QAbstractSpinBox::CorrectToPreviousValue</enum>
-      </property>
-     </widget>
-     <widget class="QDoubleSpinBox" name="PIDDdoubleSpinBox">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>40</y>
-        <width>42</width>
-        <height>20</height>
-       </rect>
-      </property>
-     </widget>
-    </widget>
-   </widget>
-   <widget class="QPushButton" name="StopControlButton">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>130</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>StopControl</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>175</x>
-      <y>10</y>
-      <width>58</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>TargetValue</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="StartUpdateControlButton">
-    <property name="geometry">
-     <rect>
-      <x>175</x>
-      <y>130</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>StartControl</string>
-    </property>
-   </widget>
-   <widget class="QSpinBox" name="TargetValuespinBox">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>10</y>
-      <width>151</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>3300</number>
-    </property>
-    <property name="value">
-     <number>1000</number>
-    </property>
-   </widget>
    <widget class="QCustomPlot" name="plotwidget" native="true">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>170</y>
-      <width>501</width>
-      <height>191</height>
+      <y>180</y>
+      <width>531</width>
+      <height>251</height>
      </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="sizeIncrement">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="PlotClearButton">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>460</x>
       <y>40</y>
-      <width>75</width>
+      <width>81</width>
       <height>23</height>
      </rect>
     </property>
@@ -349,15 +154,222 @@
    <widget class="QPushButton" name="SaveDateButton">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>460</x>
       <y>10</y>
-      <width>75</width>
+      <width>81</width>
       <height>23</height>
      </rect>
     </property>
     <property name="text">
      <string>Save to file</string>
     </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>10</y>
+      <width>231</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>TargetValue</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" colspan="2">
+      <widget class="QSpinBox" name="TargetValuespinBox">
+       <property name="maximum">
+        <number>3300</number>
+       </property>
+       <property name="value">
+        <number>600</number>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="3">
+      <widget class="QTabWidget" name="ControlSelectWidget">
+       <property name="currentIndex">
+        <number>2</number>
+       </property>
+       <widget class="QWidget" name="tab">
+        <attribute name="title">
+         <string>Manual</string>
+        </attribute>
+        <widget class="QLabel" name="label_6">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>0</y>
+           <width>51</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Action</string>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="ActionspinBox">
+         <property name="geometry">
+          <rect>
+           <x>60</x>
+           <y>1</y>
+           <width>51</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="correctionMode">
+          <enum>QAbstractSpinBox::CorrectToNearestValue</enum>
+         </property>
+         <property name="maximum">
+          <number>100</number>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="RelayControl">
+        <attribute name="title">
+         <string>Relay</string>
+        </attribute>
+        <widget class="QLabel" name="label">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>0</y>
+           <width>47</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Gate</string>
+         </property>
+        </widget>
+        <widget class="QSpinBox" name="GatespinBox">
+         <property name="geometry">
+          <rect>
+           <x>60</x>
+           <y>1</y>
+           <width>51</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="maximum">
+          <number>3300</number>
+         </property>
+         <property name="value">
+          <number>10</number>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="PIDControl">
+        <attribute name="title">
+         <string>PID</string>
+        </attribute>
+        <widget class="QLabel" name="label_3">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>1</y>
+           <width>20</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>P</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_4">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>23</y>
+           <width>47</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>I</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_5">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>42</y>
+           <width>47</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>D</string>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="PIDPdoubleSpinBox">
+         <property name="geometry">
+          <rect>
+           <x>60</x>
+           <y>1</y>
+           <width>51</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="decimals">
+          <number>1</number>
+         </property>
+         <property name="value">
+          <double>2.000000000000000</double>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="PIDIdoubleSpinBox">
+         <property name="geometry">
+          <rect>
+           <x>60</x>
+           <y>20</y>
+           <width>51</width>
+           <height>20</height>
+          </rect>
+         </property>
+         <property name="correctionMode">
+          <enum>QAbstractSpinBox::CorrectToPreviousValue</enum>
+         </property>
+         <property name="singleStep">
+          <double>0.010000000000000</double>
+         </property>
+         <property name="value">
+          <double>0.050000000000000</double>
+         </property>
+        </widget>
+        <widget class="QDoubleSpinBox" name="PIDDdoubleSpinBox">
+         <property name="geometry">
+          <rect>
+           <x>60</x>
+           <y>40</y>
+           <width>51</width>
+           <height>20</height>
+          </rect>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QPushButton" name="StopControlButton">
+       <property name="text">
+        <string>StopControl</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QPushButton" name="StartUpdateControlButton">
+       <property name="text">
+        <string>SetControl</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar">
@@ -378,8 +390,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>524</width>
-     <height>21</height>
+     <width>549</width>
+     <height>22</height>
     </rect>
    </property>
   </widget>

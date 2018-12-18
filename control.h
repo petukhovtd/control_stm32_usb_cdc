@@ -59,6 +59,7 @@ private:
         int ISum = 0;
         static constexpr int ISumMax = 1000;
         static constexpr int ISumMin = -1000;
+        int DLastError = 0;
 
     } PIDDate;
 };

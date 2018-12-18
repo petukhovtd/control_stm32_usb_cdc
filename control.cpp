@@ -63,6 +63,9 @@ void SRegulator::PIDControl()
     PIDDate.ISum = CheckThreshold(PIDDate.ISumMin, PIDDate.ISumMax, PIDDate.ISum);
     I = PIDDate.ISum*parameters.PID_I;
 
+    D = parameters.PID_D * (values.Error - PIDDate.DLastError);
+    PIDDate.DLastError = values.Error;
+
     sum = P + I + D;
 
     values.Action = CheckThreshold(0, 100, sum);

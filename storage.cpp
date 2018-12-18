@@ -62,6 +62,7 @@ int SStorage::GetSize()
 /*
  * Save date to .csv file
  * Filename is Date+Time format yyyy-MM-dd hh-mm-ss.csv
+ * Clear date mass
  * return true if write ok
  * false if open file or write error
 */
@@ -80,6 +81,12 @@ bool SStorage::SaveToFile()
                 outfile << time_mass->at(i) << "," << value_mass->at(i) << "," << action_mass->at(i) << "\n";
             }
             outfile.close();
+
+            time_mass->resize(0);
+            value_mass->resize(0);
+            action_mass->resize(0);
+            LastReadIndex = 0;
+
             return true;
         }
     }
