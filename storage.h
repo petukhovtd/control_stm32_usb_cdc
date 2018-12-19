@@ -17,6 +17,11 @@ public:
     bool GenerateNewXY();
     bool SaveToFile();
     int GetSize();
+    void ClearDate();
+    int getLastFreq();
+
+private:
+    void SetStartTimeNow();
 
 private:
     qint64 StartTime = 0;

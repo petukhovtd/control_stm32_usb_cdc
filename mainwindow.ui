@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>549</width>
-    <height>485</height>
+    <width>559</width>
+    <height>486</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -25,7 +25,7 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>201</width>
+      <width>214</width>
       <height>161</height>
      </rect>
     </property>
@@ -43,28 +43,28 @@
      <item row="7" column="1">
       <widget class="QPushButton" name="SetInFButton">
        <property name="text">
-        <string>Set In F</string>
+        <string>Set In F (Hz)</string>
        </property>
       </widget>
      </item>
      <item row="9" column="1">
       <widget class="QPushButton" name="SetOutFButton">
        <property name="text">
-        <string>Set Out F</string>
+        <string>Set Out F (Hz)</string>
        </property>
       </widget>
      </item>
      <item row="3" column="0">
       <widget class="QLabel" name="ErrorLabel">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Error: 0</string>
+        <string>Error: 0mV</string>
        </property>
       </widget>
      </item>
      <item row="2" column="1">
       <widget class="QLabel" name="InValueLabel">
        <property name="text">
-        <string>Value: 0</string>
+        <string>Value: 0mV</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -118,7 +118,7 @@
      <rect>
       <x>10</x>
       <y>180</y>
-      <width>531</width>
+      <width>541</width>
       <height>251</height>
      </rect>
     </property>
@@ -141,8 +141,8 @@
    <widget class="QPushButton" name="PlotClearButton">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>70</y>
+      <x>470</x>
+      <y>100</y>
       <width>81</width>
       <height>23</height>
      </rect>
@@ -154,7 +154,7 @@
    <widget class="QPushButton" name="SaveDateButton">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>470</x>
       <y>40</y>
       <width>81</width>
       <height>23</height>
@@ -167,7 +167,7 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>230</x>
       <y>10</y>
       <width>231</width>
       <height>161</height>
@@ -177,7 +177,7 @@
      <item row="0" column="0">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>TargetValue</string>
+        <string>TargetValue (mv)</string>
        </property>
       </widget>
      </item>
@@ -355,17 +355,17 @@
        </widget>
       </widget>
      </item>
-     <item row="2" column="2">
-      <widget class="QPushButton" name="StopControlButton">
-       <property name="text">
-        <string>StopControl</string>
-       </property>
-      </widget>
-     </item>
      <item row="2" column="0">
       <widget class="QPushButton" name="StartUpdateControlButton">
        <property name="text">
         <string>SetControl</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1" colspan="2">
+      <widget class="QPushButton" name="StopControlButton">
+       <property name="text">
+        <string>StopControl</string>
        </property>
       </widget>
      </item>
@@ -374,7 +374,7 @@
    <widget class="QPushButton" name="ReScanPortButton">
     <property name="geometry">
      <rect>
-      <x>460</x>
+      <x>470</x>
       <y>10</y>
       <width>81</width>
       <height>21</height>
@@ -382,6 +382,32 @@
     </property>
     <property name="text">
      <string>Re-Scan</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="FrealLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>440</y>
+      <width>531</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ClearDateButton">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>70</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>ClearDate</string>
     </property>
    </widget>
   </widget>
@@ -395,7 +421,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>549</width>
+     <width>559</width>
      <height>22</height>
     </rect>
    </property>

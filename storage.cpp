@@ -9,12 +9,21 @@ SStorage::SStorage(int n):
     value_mass->reserve(size);
     action_mass->reserve(size);
     time_mass->reserve(size);
-    StartTime = QDateTime::currentMSecsSinceEpoch(); //Start app time
+
+    SetStartTimeNow();
 }
 
 SStorage::~SStorage()
 {
 
+}
+
+/*
+ * Start log time
+*/
+void SStorage::SetStartTimeNow()
+{
+    StartTime = QDateTime::currentMSecsSinceEpoch();
 }
 
 /*
@@ -62,7 +71,6 @@ int SStorage::GetSize()
 /*
  * Save date to .csv file
  * Filename is Date+Time format yyyy-MM-dd hh-mm-ss.csv
- * Clear date mass
  * return true if write ok
  * false if open file or write error
 */
@@ -81,14 +89,30 @@ bool SStorage::SaveToFile()
                 outfile << time_mass->at(i) << "," << value_mass->at(i) << "," << action_mass->at(i) << "\n";
             }
             outfile.close();
-
-            time_mass->resize(0);
-            value_mass->resize(0);
-            action_mass->resize(0);
-            LastReadIndex = 0;
-
+            ClearDate();
             return true;
         }
     }
     return false;
+}
+
+void SStorage::ClearDate()
+{
+    time_mass->resize(0);
+    value_mass->resize(0);
+    action_mass->resize(0);
+    LastReadIndex = 0;
+    SetStartTimeNow();
+}
+
+int SStorage::getLastFreq()
+{
+    auto index1 = time_mass->size();
+    if (index1 > 1)
+    {
+        int t = time_mass->at(index1-1) - time_mass->at(index1-2);
+        int f = (1/float(t) * 1000);
+        return f;
+    }
+    return 0;
 }

@@ -33,10 +33,9 @@ private slots:
     void StopControl();
     void SavetoFile();
     void PlotClear();
-
     void UpdateInterface();
-
     void ReScanComPort();
+    void ClearDate();
 
 private:
     void GetPortList();

@@ -22,18 +22,19 @@ SProtocolConvertor::~SProtocolConvertor()
 */
 int SProtocolConvertor::InToValue(QByteArray& b)
 {
+    int date = -1;
     std::string s = b.toStdString();
     static std::regex re(R"(D(\d{1,2})=(\d{1,6});)");
     std::smatch sm;
-    std::regex_match(s, sm, re);
-    if (sm.size() == 3)
+    while(std::regex_search(s, sm, re))
     {
-        if (stoi(sm[1]) == 1)
+        if ((sm.size() == 3) & (stoi(sm[1]) == 1))
         {
-            return stoi(sm[2]);
+            date = stoi(sm[2]);
         }
+        s = sm.suffix();
     }
-    return 0;
+    return date;
 }
 
 

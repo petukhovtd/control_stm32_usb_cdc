@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->SaveDateButton, SIGNAL(released()), this, SLOT(SavetoFile()));
     connect(ui->PlotClearButton, SIGNAL(released()), this, SLOT(PlotClear()));
     connect(ui->ReScanPortButton, SIGNAL(released()), this, SLOT(ReScanComPort()));
+    connect(ui->ClearDateButton, SIGNAL(released()), this, SLOT(ClearDate()));
 
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateInterface()));
 
@@ -43,6 +44,7 @@ MainWindow::~MainWindow()
  * IN: status for button send IN and OUT frequency
  * /IN status button Save to file date
  * Set text "Save to file" in SavetoFile button
+ * /IN clear date
 */
 void MainWindow::ButtonStatefromConnect(bool state)
 {
@@ -51,6 +53,8 @@ void MainWindow::ButtonStatefromConnect(bool state)
 
     ui->SaveDateButton->setEnabled(!state);
     ui->SaveDateButton->setText("Save to file");
+
+    ui->ClearDateButton->setEnabled(!state);
 }
 
 /*
@@ -118,6 +122,7 @@ void MainWindow::ComPortConnect()
 /*
  * Read date from com port to signal
  * Convert input string for int
+ * if return -1 -> no new date
  * Call regulator, get out value
  * Convet out to byte array
  * Send date
@@ -127,10 +132,13 @@ void MainWindow::ComPortRead()
 {
     QByteArray data = sp->readAll();
     int i = convert->InToValue(data);
-    int action = reg->Regulator(i);
-    QByteArray message = convert->ValueToOut(convert->SetOutAction, action);
-    sp->write(message);
-    buffer->addPiont(i, action);
+    if (i >= 0)
+    {
+        int action = reg->Regulator(i);
+        QByteArray message = convert->ValueToOut(convert->SetOutAction, action);
+        sp->write(message);
+        buffer->addPiont(i, action);
+    }
 }
 
 /*
@@ -198,13 +206,12 @@ void MainWindow::UpdateInterface()
     {
         ButtonStatefromConnect(false);
         ui->ConnectButton->setText("Connect");
-//        GetPortList();
     }
 
-    ui->InValueLabel->setText("Value: " + QString::number(reg->getValue()));
+    ui->InValueLabel->setText("Value: " + QString::number(reg->getValue()) + "mV");
     ui->OutValueLabel->setText("Action: " + QString::number(reg->getAction()) + "%");
-    ui->ErrorLabel->setText("Error: " + QString::number(reg->getError()));
-
+    ui->ErrorLabel->setText("Error: " + QString::number(reg->getError()) + "mV");
+    ui->FrealLabel->setText("Real freq: "+QString::number(buffer->getLastFreq()) + "Hz");
     if (buffer->GenerateNewXY())
     {
         ui->plotwidget->graph(0)->addData(buffer->x_mass, buffer->y_mass);
@@ -251,4 +258,9 @@ void MainWindow::SavetoFile()
 void MainWindow::ReScanComPort()
 {
     GetPortList();
+}
+
+void MainWindow::ClearDate()
+{
+    buffer->ClearDate();
 }
