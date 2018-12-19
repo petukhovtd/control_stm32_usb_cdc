@@ -22,9 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->StartUpdateControlButton, SIGNAL(released()), this, SLOT(StartUpdateControl()));
     connect(ui->StopControlButton, SIGNAL(released()), this, SLOT(StopControl()));
     connect(ui->SaveDateButton, SIGNAL(released()), this, SLOT(SavetoFile()));
-    connect(ui->PlotClearButton, SIGNAL(released()), this, SLOT(PlotClear()));
     connect(ui->ReScanPortButton, SIGNAL(released()), this, SLOT(ReScanComPort()));
-    connect(ui->ClearDateButton, SIGNAL(released()), this, SLOT(ClearDate()));
+    connect(ui->ClearPlotButton, SIGNAL(released()), this, SLOT(ClearPlot()));
 
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateInterface()));
 
@@ -44,7 +43,7 @@ MainWindow::~MainWindow()
  * IN: status for button send IN and OUT frequency
  * /IN status button Save to file date
  * Set text "Save to file" in SavetoFile button
- * /IN clear date
+ * /IN clear
 */
 void MainWindow::ButtonStatefromConnect(bool state)
 {
@@ -53,8 +52,6 @@ void MainWindow::ButtonStatefromConnect(bool state)
 
     ui->SaveDateButton->setEnabled(!state);
     ui->SaveDateButton->setText("Save to file");
-
-    ui->ClearDateButton->setEnabled(!state);
 }
 
 /*
@@ -226,9 +223,8 @@ void MainWindow::UpdateInterface()
 
 /*
  * Clear plot
- * Date not clear
 */
-void MainWindow::PlotClear()
+void MainWindow::ClearPlot()
 {
     if( ui->plotwidget->graphCount())
     {
@@ -258,9 +254,4 @@ void MainWindow::SavetoFile()
 void MainWindow::ReScanComPort()
 {
     GetPortList();
-}
-
-void MainWindow::ClearDate()
-{
-    buffer->ClearDate();
 }

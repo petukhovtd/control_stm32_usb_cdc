@@ -138,19 +138,6 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="PlotClearButton">
-    <property name="geometry">
-     <rect>
-      <x>470</x>
-      <y>100</y>
-      <width>81</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>ClearPlot</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="SaveDateButton">
     <property name="geometry">
      <rect>
@@ -397,7 +384,7 @@
      <string>TextLabel</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="ClearDateButton">
+   <widget class="QPushButton" name="ClearPlotButton">
     <property name="geometry">
      <rect>
       <x>470</x>
@@ -407,7 +394,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>ClearDate</string>
+     <string>ClearPlot</string>
     </property>
    </widget>
   </widget>
