@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <QTimer>
-
+#include <QThread>
 #include <QtSerialPort>
 #include <QSerialPortInfo>
 
@@ -35,6 +35,8 @@ private slots:
     void PlotClear();
 
     void UpdateInterface();
+
+    void ReScanComPort();
 
 private:
     void GetPortList();

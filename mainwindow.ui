@@ -57,7 +57,7 @@
      <item row="3" column="0">
       <widget class="QLabel" name="ErrorLabel">
        <property name="text">
-        <string>Error: </string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Error: 0</string>
        </property>
       </widget>
      </item>
@@ -142,7 +142,7 @@
     <property name="geometry">
      <rect>
       <x>460</x>
-      <y>40</y>
+      <y>70</y>
       <width>81</width>
       <height>23</height>
      </rect>
@@ -155,7 +155,7 @@
     <property name="geometry">
      <rect>
       <x>460</x>
-      <y>10</y>
+      <y>40</y>
       <width>81</width>
       <height>23</height>
      </rect>
@@ -164,7 +164,7 @@
      <string>Save to file</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>220</x>
@@ -371,19 +371,24 @@
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="ReScanPortButton">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>10</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Re-Scan</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar">
    <property name="sizeGripEnabled">
     <bool>true</bool>
    </property>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
@@ -403,6 +408,11 @@
   <action name="actionClear_Plot">
    <property name="text">
     <string>Clear Plot</string>
+   </property>
+  </action>
+  <action name="actionRe_Scan_COM_Ports">
+   <property name="text">
+    <string>Re-Scan COM Ports</string>
    </property>
   </action>
  </widget>

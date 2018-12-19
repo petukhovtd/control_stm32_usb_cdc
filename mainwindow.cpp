@@ -23,6 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->StopControlButton, SIGNAL(released()), this, SLOT(StopControl()));
     connect(ui->SaveDateButton, SIGNAL(released()), this, SLOT(SavetoFile()));
     connect(ui->PlotClearButton, SIGNAL(released()), this, SLOT(PlotClear()));
+    connect(ui->ReScanPortButton, SIGNAL(released()), this, SLOT(ReScanComPort()));
 
     connect(timer, SIGNAL(timeout()), this, SLOT(UpdateInterface()));
 
@@ -58,6 +59,7 @@ void MainWindow::ButtonStatefromConnect(bool state)
 */
 void MainWindow::GetPortList()
 {
+    ui->PortSelectcomboBox->clear();
     const auto infos = QSerialPortInfo::availablePorts();
     for (const QSerialPortInfo &info : infos)
     {
@@ -85,7 +87,6 @@ void MainWindow::PlotConfig()
 /*
  * Connect or disconnect com port
  * Targer com port select to ComboBox
- * set button state and text on Connect/Disconnect button
 */
 void MainWindow::ComPortConnect()
 {
@@ -111,17 +112,6 @@ void MainWindow::ComPortConnect()
         {
             sp->close();
         }
-    }
-
-    if(sp->isOpen())
-    {
-        ButtonStatefromConnect(true);
-        ui->ConnectButton->setText("Disconnect");
-    }
-    else
-    {
-        ButtonStatefromConnect(false);
-        ui->ConnectButton->setText("Connect");
     }
 }
 
@@ -192,11 +182,25 @@ void MainWindow::StopControl()
 }
 
 /*
+ * set button state and text on Connect/Disconnect button
+ * Chek acsses com port when disconnect
  * Update date by timer
  * Add point to graph
 */
 void MainWindow::UpdateInterface()
 {
+    if(sp->isOpen())
+    {
+        ButtonStatefromConnect(true);
+        ui->ConnectButton->setText("Disconnect");
+    }
+    else
+    {
+        ButtonStatefromConnect(false);
+        ui->ConnectButton->setText("Connect");
+//        GetPortList();
+    }
+
     ui->InValueLabel->setText("Value: " + QString::number(reg->getValue()));
     ui->OutValueLabel->setText("Action: " + QString::number(reg->getAction()) + "%");
     ui->ErrorLabel->setText("Error: " + QString::number(reg->getError()));
@@ -242,4 +246,9 @@ void MainWindow::SavetoFile()
     {
         ui->SaveDateButton->setText("Save error");
     }
+}
+
+void MainWindow::ReScanComPort()
+{
+    GetPortList();
 }
